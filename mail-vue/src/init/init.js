@@ -22,6 +22,8 @@ export async function init() {
     }
 
     i18n.global.locale.value = settingStore.lang
+    const { setExtend } = await import('@/utils/day.js')
+    setExtend(settingStore.lang === 'en' ? 'en' : 'zh-cn')
 
     let setting = null;
 

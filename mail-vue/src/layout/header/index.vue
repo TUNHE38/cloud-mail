@@ -16,6 +16,21 @@
       <div v-else class="dark-icon icon-item" @click="openDark($event)">
         <Icon icon="solar:moon-linear"/>
       </div>
+      <el-dropdown class="lang-dropdown" trigger="click" :teleported="false">
+        <div class="lang-switch icon-item" :title="$t('switchLanguage')">
+          <Icon icon="mdi:translate"/>
+        </div>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item :disabled="settingStore.lang === 'zh'" @click="changeLang('zh')">
+              {{ $t('langZh') }}
+            </el-dropdown-item>
+            <el-dropdown-item :disabled="settingStore.lang === 'en'" @click="changeLang('en')">
+              {{ $t('langEn') }}
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
       <div class="notice icon-item" @click="openNotice">
         <Icon icon="streamline-plump:announcement-megaphone"/>
       </div>
@@ -433,9 +448,18 @@ function formatName(email) {
     background: var(--base-fill);
   }
 
+  .lang-dropdown {
+    display: flex;
+    align-items: center;
+  }
+
   .notice {
     font-size: 22px;
     margin-right: 4px;
+  }
+
+  .lang-switch {
+    font-size: 18px;
   }
 
   .dark-icon {
