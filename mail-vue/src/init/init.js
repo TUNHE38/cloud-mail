@@ -27,44 +27,37 @@ export async function init() {
 
     let setting = null;
 
-    try {
-        if (token) {
-            const userPromise = loginUserInfo().catch(e => {
-                console.error(e);
-                return null;
+    if (token) {
+        const userPromise = loginUserInfo().catch(e => {
+            console.error(e);
+            return null;
+        });
+
+        const [s, user] = await Promise.all([websiteConfig(), userPromise]);
+        setting = s;
+        settingStore.settings = setting;
+        settingStore.domainList = setting.domainList;
+        document.title = setting.title;
+
+        if (user) {
+            accountStore.currentAccountId = user.account.accountId;
+            accountStore.currentAccount = user.account;
+            userStore.user = user;
+
+            const routers = permsToRouter(user.permKeys);
+            routers.forEach(routerData => {
+                router.addRoute('layout', routerData);
             });
-
-            const [s, user] = await Promise.all([websiteConfig(), userPromise]);
-            setting = s;
-            settingStore.settings = setting;
-            settingStore.domainList = setting.domainList;
-            document.title = setting.title;
-
-            if (user) {
-                accountStore.currentAccountId = user.account.accountId;
-                accountStore.currentAccount = user.account;
-                userStore.user = user;
-
-                const routers = permsToRouter(user.permKeys);
-                routers.forEach(routerData => {
-                    router.addRoute('layout', routerData);
-                });
-            }
-
-        } else {
-            setting = await websiteConfig();
-            settingStore.settings = setting;
-            settingStore.domainList = setting.domainList;
-            document.title = setting.title;
         }
-    } catch (e) {
-        console.error(e)
-        if (!settingStore.settings?.title) {
-            document.title = 'Cloud Mail'
-        }
-    } finally {
-        removeLoading();
+
+    } else {
+        setting = await websiteConfig();
+        settingStore.settings = setting;
+        settingStore.domainList = setting.domainList;
+        document.title = setting.title;
     }
+
+    removeLoading();
 }
 
 function removeLoading() {
