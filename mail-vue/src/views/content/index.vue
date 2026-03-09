@@ -218,14 +218,18 @@ const handleDelete = () => {
 .box {
   height: 100%;
   overflow: hidden;
+  background: var(--anime-surface-2);
+  backdrop-filter: blur(8px);
 }
 
 .header-actions {
-  padding: 9px 15px;
+  padding: 10px 15px;
   display: flex;
   align-items: center;
   gap: 20px;
   box-shadow: var(--header-actions-border);
+  background: var(--anime-panel-gradient);
+  border-bottom: 1px solid var(--anime-border-soft);
   font-size: 18px;
   .star {
     display: flex;
@@ -235,6 +239,13 @@ const handleDelete = () => {
   }
   .icon {
     cursor: pointer;
+    border-radius: var(--anime-radius-xs);
+    transition: all var(--anime-motion-fast);
+  }
+
+  .icon:hover {
+    color: var(--el-color-primary);
+    transform: translateY(-1px);
   }
 }
 
@@ -270,9 +281,11 @@ const handleDelete = () => {
     .att {
       margin-top: 30px;
       margin-bottom: 30px;
-      border: 1px solid var(--light-border-color);
+      border: 1px solid var(--anime-border-soft);
+      background: var(--anime-surface-1);
+      box-shadow: var(--anime-shadow-soft);
       padding: 14px;
-      border-radius: 6px;
+      border-radius: var(--anime-radius-md);
       width: fit-content;
       .att-box {
         min-width: min(410px,calc(100vw - 60px));
@@ -296,9 +309,10 @@ const handleDelete = () => {
         div {
           align-self: center;
         }
-        background: var(--light-ill);
+        background: var(--anime-surface-3);
+        border: 1px solid var(--anime-border-soft);
         padding: 5px 7px;
-        border-radius: 4px;
+        border-radius: var(--anime-radius-sm);
         align-self: start;
         display: grid;
         grid-template-columns: auto 1fr auto auto;
@@ -343,7 +357,7 @@ const handleDelete = () => {
 
     .email-info {
 
-      border-bottom: 1px solid var(--light-border-color);
+      border-bottom: 1px solid var(--anime-border-soft);
       margin-bottom: 20px;
       padding-bottom: 8px;
       @media (max-width: 1024px) {

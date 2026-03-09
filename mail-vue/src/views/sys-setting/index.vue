@@ -1336,7 +1336,7 @@ function editSetting(settingForm, refreshStatus = true) {
 .settings-container {
   height: 100%;
   overflow: hidden;
-  background: var(--extra-light-fill) !important;
+  background: var(--anime-surface-2) !important;
   position: relative;
 
   .loading {
@@ -1416,10 +1416,11 @@ function editSetting(settingForm, refreshStatus = true) {
 }
 
 .settings-card {
-  background-color: var(--el-bg-color);
-  border-radius: 8px;
-  border: 1px solid var(--el-border-color);
-  transition: all 300ms;
+  background: var(--anime-panel-gradient);
+  border-radius: var(--anime-radius-md);
+  border: 1px solid var(--anime-border-soft);
+  transition: all var(--anime-motion-fast);
+  box-shadow: var(--anime-shadow-soft);
   overflow: hidden;
 }
 
@@ -1428,7 +1429,8 @@ function editSetting(settingForm, refreshStatus = true) {
   font-size: 15px;
   font-weight: bold;
   padding: 10px 20px;
-  border-bottom: 1px solid var(--el-border-color);
+  border-bottom: 1px solid var(--anime-border-soft);
+  background: color-mix(in srgb, var(--anime-surface-2) 72%, transparent);
 }
 
 .card-content {
@@ -1482,13 +1484,13 @@ function editSetting(settingForm, refreshStatus = true) {
 
 .warning {
   margin-left: 2px;
-  color: grey;
+  color: var(--secondary-text-color);
   cursor: pointer;
 }
 
 .cropper {
-  border-radius: 4px;
-  border: 1px solid #D4D7DE;
+  border-radius: var(--anime-radius-sm);
+  border: 1px solid var(--anime-border-soft);
   height: 397px;
   width: 705px;
   @media (max-width: 767px) {

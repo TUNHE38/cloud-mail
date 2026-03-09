@@ -44,7 +44,7 @@
                  v-if="!item.expand"
                  :key="item.emailId"
                  @contextmenu="handleContextmenu($event, item)"
-                 :style="item.rightChecked ? 'background: #FDF6EC' : ''"
+                 :style="item.rightChecked ? 'background: var(--anime-selected-fill)' : ''"
             >
               <el-checkbox :class=" props.type === 'all-email' ? 'all-email-checkbox' : 'checkbox'"
                            v-model="item.checked" @click.stop></el-checkbox>
@@ -1181,8 +1181,12 @@ function loadData() {
   }
 
   &:hover {
-    background-color: var(--email-hover-background);
+    background-color: var(--anime-hover-fill);
     z-index: 0;
+  }
+
+  &[data-checked="true"] {
+    background-color: var(--anime-selected-fill);
   }
 
   /*&[data-checked="true"] {
@@ -1198,6 +1202,7 @@ function loadData() {
 .pc-star {
   display: flex;
   width: 40px;
+  color: var(--secondary-text-color);
 }
 
 @media (max-width: 1366px) {
@@ -1227,19 +1232,21 @@ function loadData() {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 15px;
-  padding: 3px 15px;
+  gap: 12px;
+  padding: 6px 14px;
   box-shadow: var(--header-actions-border);
+  background: var(--anime-panel-gradient);
+  border-bottom: 1px solid var(--anime-border-soft);
 
   .header-left {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     position: relative;
-    column-gap: 20px;
+    column-gap: 16px;
     row-gap: 8px;
     padding-left: 2px;
-    color: var(--el-text-color-primary);;
+    color: var(--el-text-color-primary);
   }
 
   .header-right {
@@ -1247,7 +1254,7 @@ function loadData() {
     grid-template-columns: auto auto;
     align-items: start;
     height: 100%;
-    color: var(--el-text-color-primary);;
+    color: var(--el-text-color-primary);
 
     .email-count {
       white-space: nowrap;
@@ -1258,6 +1265,13 @@ function loadData() {
   .icon {
     font-size: 18px;
     cursor: pointer;
+    border-radius: var(--anime-radius-xs);
+    transition: all var(--anime-motion-fast);
+  }
+
+  .icon:hover {
+    color: var(--el-color-primary);
+    transform: translateY(-1px);
   }
 
   .more-icon {
@@ -1298,12 +1312,13 @@ function loadData() {
 .unread {
   height: 6px;
   width: 6px;
-  background: var(--el-color-primary);
+  background: var(--anime-unread-dot);
   margin-bottom: 2px;
   margin-right: 5px;
   border-radius: 50%;
   display: inline-block;
   justify-content: center;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--anime-unread-dot) 65%, transparent);
 }
 
 ul {

@@ -511,8 +511,8 @@ path[fill="#ffdda1"] {
 <style scoped lang="scss">
 .account-box {
 
-  border-right: 1px solid var(--el-border-color) !important;
-  background-color: var(--el-bg-color);
+  border-right: 1px solid var(--anime-border-soft) !important;
+  background: var(--anime-panel-gradient);
   height: 100%;
   overflow: hidden;
 
@@ -526,6 +526,13 @@ path[fill="#ffdda1"] {
 
     .icon {
       cursor: pointer;
+      border-radius: var(--anime-radius-xs);
+      transition: all var(--anime-motion-fast);
+    }
+
+    .icon:hover {
+      color: var(--el-color-primary);
+      transform: translateY(-1px);
     }
 
     .refresh {
@@ -571,13 +578,16 @@ path[fill="#ffdda1"] {
   }
 
   .item {
-    background-color: var(--el-bg-color);
-    border-radius: 8px;
+    background: var(--anime-surface-2);
+    border: 1px solid var(--anime-border-soft);
+    border-radius: var(--anime-radius-md);
+    box-shadow: var(--anime-shadow-soft);
     padding: 12px 10px;
     margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
     cursor: pointer;
+    transition: all var(--anime-motion-fast);
 
     .account {
       font-weight: 600;
@@ -614,8 +624,14 @@ path[fill="#ffdda1"] {
     margin-top: 10px;
   }
 
+  .item:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--anime-shadow-elevated);
+  }
+
   .item-choose {
-    background: var(--choose-account-background);
+    background: var(--anime-selected-fill);
+    border-color: var(--anime-border-strong);
   }
 }
 

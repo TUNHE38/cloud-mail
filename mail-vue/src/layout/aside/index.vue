@@ -85,7 +85,7 @@ const route = useRoute();
 .title {
   margin: 15px 10px;
   height: 45px;
-  border-radius: 6px;
+  border-radius: var(--anime-radius-md);
   display: flex;
   position: relative;
   font-size: 16px;
@@ -94,8 +94,10 @@ const route = useRoute();
   justify-content: center;
   gap: 5px;
   color: #ffffff;
-  background: linear-gradient(135deg, #1890ff, #3a80dd);
-  transition: all 0.3s ease;
+  background: var(--anime-primary-gradient);
+  border: 1px solid color-mix(in srgb, var(--anime-border-strong) 70%, transparent);
+  box-shadow: var(--anime-shadow-soft);
+  transition: all var(--anime-motion-fast);
   max-width: 240px;
   padding: 0 10px;
   > div {
@@ -122,27 +124,34 @@ const route = useRoute();
 
 
 .manage-title {
-  margin-top: 10px;
+  margin-top: 12px;
   padding-left: 20px;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  letter-spacing: 0.4px;
 }
 
 .el-menu-item {
   margin: 5px 10px !important;
-  border-radius: 6px;
+  border-radius: var(--anime-radius-sm);
   height: 36px;
   padding: 10px !important;
+  border: 1px solid transparent;
+  transition: all var(--anime-motion-fast);
 }
 
 .choose-item {
   font-weight: bold;
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-color: rgba(167, 191, 255, 0.45);
   backdrop-filter: blur(4px);
+  box-shadow: 0 0 0 1px rgba(162, 186, 255, 0.25), 0 6px 18px rgba(2, 9, 22, 0.28);
 }
 
 @media (hover: hover) {
   .el-menu-item:hover {
-    background: rgba(255, 255, 255, 0.08) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(164, 184, 236, 0.35);
   }
 }
 
@@ -152,15 +161,15 @@ const route = useRoute();
 
 
 :deep(.el-scrollbar__wrap--hidden-default ) {
-  background: var(--aside-backgound) !important;
+  background: var(--anime-aside-bg) !important;
 }
 
 :deep(.el-menu-item) {
-  background: var(--aside-backgound);
+  background: transparent;
 }
 
 :deep(.el-menu) {
-  background: var(--aside-backgound);
+  background: transparent;
 }
 
 .el-menu {
@@ -168,8 +177,14 @@ const route = useRoute();
   width: 260px;
 }
 
+:deep(.el-menu) {
+  --el-menu-hover-bg-color: rgba(255, 255, 255, 0.1);
+  --el-menu-active-color: #ffffff;
+  --el-menu-text-color: rgba(255, 255, 255, 0.92);
+}
+
 :deep(.el-divider__text) {
-  background: var(--aside-backgound);
+  background: var(--anime-aside-bg);
   color: #FFFFFF;
 }
 

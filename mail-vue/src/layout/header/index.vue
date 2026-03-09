@@ -278,7 +278,7 @@ function formatName(email) {
 <style lang="scss" scoped>
 
 :deep(.el-popper.is-pure) {
-  border-radius: 6px;
+  border-radius: var(--anime-radius-md);
 }
 
 .user-details {
@@ -287,6 +287,10 @@ function formatName(email) {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
+  background: var(--anime-panel-gradient);
+  border: 1px solid var(--anime-border-soft);
+  border-radius: var(--anime-radius-md);
+  box-shadow: var(--anime-shadow-soft);
 
   .user-name {
     font-weight: bold;
@@ -338,6 +342,11 @@ function formatName(email) {
     text-align: center;
     color: var(--regular-text-color);
     cursor: pointer;
+    transition: color var(--anime-motion-fast);
+  }
+
+  .detail-email:hover {
+    color: var(--el-color-primary);
   }
 
   .logout {
@@ -358,14 +367,15 @@ function formatName(email) {
     margin-top: 20px;
     height: 40px;
     width: 40px;
-    background: var(--el-bg-color);
+    background: var(--anime-surface-2);
     color: var(--el-text-color-primary);
-    border: 1px solid var(--dark-border);
+    border: 1px solid var(--anime-border-soft);
     font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: var(--anime-radius-sm);
+    box-shadow: var(--anime-shadow-soft);
   }
 }
 
@@ -377,6 +387,7 @@ function formatName(email) {
   height: 100%;
   gap: 10px;
   grid-template-columns: auto auto 1fr;
+  padding: 0 12px;
 }
 
 .header.not-send {
@@ -395,17 +406,24 @@ function formatName(email) {
     height: 34px;
     border-radius: 50%;
     color: #ffffff;
-    background: linear-gradient(135deg, #1890ff, #3a80dd);
-    transition: all 0.3s ease;
+    background: var(--anime-primary-gradient);
+    border: 1px solid color-mix(in srgb, var(--anime-border-strong) 55%, transparent);
+    transition: all var(--anime-motion-fast);
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: var(--anime-shadow-soft);
 
     .writer-text {
       margin-left: 15px;
       font-size: 14px;
       font-weight: bold;;
     }
+  }
+
+  .writer:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--anime-shadow-elevated);
   }
 }
 
@@ -437,15 +455,18 @@ function formatName(email) {
     align-self: center;
     width: 30px;
     height: 30px;
-    border-radius: 4px;
+    border-radius: var(--anime-radius-xs);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: all var(--anime-motion-fast);
+    border: 1px solid transparent;
   }
 
   .icon-item:hover {
-    background: var(--base-fill);
+    background: var(--anime-hover-fill);
+    border-color: var(--anime-border-soft);
   }
 
   .lang-dropdown {
@@ -476,15 +497,17 @@ function formatName(email) {
     cursor: pointer;
 
     .avatar-text {
-      background: var(--el-bg-color);
+      background: var(--anime-surface-2);
       color: var(--el-text-color-primary);
       height: 30px;
       width: 30px;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 8px;
-      border: 1px solid var(--dark-border);
+      border-radius: var(--anime-radius-sm);
+      border: 1px solid var(--anime-border-soft);
+      box-shadow: var(--anime-shadow-soft);
+      transition: all var(--anime-motion-fast);
     }
 
     .setting-icon {
@@ -492,6 +515,18 @@ function formatName(email) {
       top: 0;
       margin-right: 10px;
       bottom: 10px;
+      transition: transform var(--anime-motion-fast);
+    }
+  }
+
+  .avatar:hover {
+    .avatar-text {
+      border-color: var(--anime-border-strong);
+      box-shadow: var(--anime-glow);
+    }
+
+    .setting-icon {
+      transform: translateY(1px);
     }
   }
 

@@ -626,15 +626,17 @@ function close() {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(13, 20, 36, 0.36);
+  backdrop-filter: blur(4px);
 
   .write-box {
-    background: var(--el-bg-color);
+    background: var(--anime-panel-gradient);
     width: min(1367px, calc(100% - 80px));
-    box-shadow: var(--el-box-shadow-light);
-    border: 1px solid var(--el-border-color-light);
+    box-shadow: var(--anime-shadow-elevated);
+    border: 1px solid var(--anime-border-soft);
     transition: var(--el-transition-duration);
     padding: 15px;
-    border-radius: 8px;
+    border-radius: var(--anime-radius-lg);
     display: grid;
     grid-template-rows: auto 1fr;
     overflow: hidden;
@@ -674,7 +676,7 @@ function close() {
       }
 
       .send-email {
-        color: #999896;
+        color: var(--regular-text-color);
         margin-left: 5px;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -729,8 +731,9 @@ function close() {
             height: 32px;
             font-size: 14px;
             padding: 4px 5px;
-            background: var(--light-ill);
-            border-radius: 4px;
+            background: var(--anime-surface-3);
+            border: 1px solid var(--anime-border-soft);
+            border-radius: var(--anime-radius-sm);
             .att-filename {
               white-space: nowrap;
               text-overflow: ellipsis;

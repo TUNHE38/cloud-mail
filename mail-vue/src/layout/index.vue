@@ -56,14 +56,14 @@ onBeforeUnmount(() => {
   height: 100%;
   z-index: 100;
   transform: translateX(-100%);
-  transition: all 100ms ease;
+  transition: all var(--anime-motion-fast);
 }
 
 .aside-show {
-  -webkit-box-shadow: var(--aside-right-border);
-  box-shadow: var(--aside-right-border);
+  -webkit-box-shadow: var(--anime-shadow-elevated);
+  box-shadow: var(--anime-shadow-elevated);
   transform: translateX(0);
-  transition: all 100ms ease;
+  transition: all var(--anime-motion-fast);
   z-index: 101;
   @media (max-width: 1025px) {
     position: fixed;
@@ -71,13 +71,13 @@ onBeforeUnmount(() => {
     left: 0;
     z-index: 101;
     height: 100%;
-    background: var(--el-bg-color);
+    background: var(--anime-aside-bg);
   }
 }
 
 .el-aside {
   width: auto;
-  transition: all 100ms ease;
+  transition: all var(--anime-motion-fast);
 }
 
 .layout {
@@ -87,13 +87,15 @@ onBeforeUnmount(() => {
   top: 0;
   left: 0;
   overflow: hidden;
+  background: var(--anime-bg-gradient);
 }
 
 .main-container {
   min-height: 100%;
-  background: var(--el-bg-color);
+  background: var(--anime-main-surface);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  backdrop-filter: blur(8px);
 }
 
 .el-main {
@@ -101,9 +103,10 @@ onBeforeUnmount(() => {
 }
 
 .el-header {
-  background: var(--el-bg-color);
-  border-bottom: solid 1px var(--el-border-color);
-  padding: 0 0 0 0;
+  background: var(--anime-header-bg);
+  border-bottom: solid 1px var(--anime-border-soft);
+  padding: 0;
+  backdrop-filter: blur(8px);
 }
 
 .overlay-show {
@@ -112,9 +115,10 @@ onBeforeUnmount(() => {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(13, 20, 36, 0.42);
+  backdrop-filter: blur(4px);
   z-index: 99;
-  transition: all 0.3s;
+  transition: all var(--anime-motion-normal);
 }
 
 .overlay-hide {

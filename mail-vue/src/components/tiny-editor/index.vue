@@ -97,8 +97,11 @@ function initEditor() {
     skin: `${uiStore.dark ? 'oxide-dark' : 'oxide'}`,
     content_css: `/tinymce/css/index.css,${uiStore.dark ? 'dark' : 'default'}`,
     content_style: `:root {
-         --scrollbar-track-color: ${uiStore.dark ? '#141414' : '#FFFFFF'};
-         --scrollbar-thumb-color: ${uiStore.dark ? '#8D9095' : '#A8ABB2'};
+         --scrollbar-track-color: ${uiStore.dark ? '#26324d' : '#d7e5ff'};
+         --scrollbar-thumb-color: ${uiStore.dark ? '#8ea0c7' : '#9eb6e6'};
+         --editor-quote-bg: ${uiStore.dark ? 'rgba(45, 60, 96, 0.55)' : 'rgba(225, 238, 255, 0.72)'};
+         --editor-quote-border: ${uiStore.dark ? '#7590cf' : '#88a9ed'};
+         --editor-link-color: ${uiStore.dark ? '#9dc0ff' : '#4a7df2'};
     }`,
     plugins: 'link image advlist lists  emoticons fullscreen  table preview code',
     toolbar: 'bold emoticons forecolor backcolor italic fontsize | alignleft aligncenter alignright alignjustify | outdent indent |  bullist numlist | link image  | table code preview fullscreen',
@@ -209,13 +212,28 @@ function destroyEditor() {
 }
 
 :deep(.tox-tinymce) {
-  border: none;
-  border-radius: 0;
+  border: 1px solid var(--anime-border-soft);
+  border-radius: var(--anime-radius-md);
+  overflow: hidden;
+  box-shadow: var(--anime-shadow-soft);
 }
 
 :deep(.tox-toolbar__group) {
   padding-left: 0 !important;
   margin: 0 !important;
+}
+
+:deep(.tox .tox-editor-header) {
+  background: var(--anime-panel-gradient);
+  border-bottom: 1px solid var(--anime-border-soft);
+}
+
+:deep(.tox .tox-toolbar, .tox .tox-toolbar__overflow, .tox .tox-toolbar__primary) {
+  background: transparent;
+}
+
+:deep(.tox .tox-edit-area__iframe) {
+  background: transparent;
 }
 
 :deep(.tox-tbtn) {

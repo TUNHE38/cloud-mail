@@ -13,12 +13,14 @@ p {
 
 a {
     text-decoration: none;
-    color: #0E70DF;
+    color: var(--editor-link-color, #0E70DF);
 }
 
 body {
     margin: 10px 8px 0 5px !important;
     font-size: 14px;
+    color: var(--el-text-color-primary, #303133);
+    background: transparent;
 }
 
 :root {
@@ -28,7 +30,9 @@ body {
 
 .mceNonEditable {
     color: #303133;
-    background: #FFFFFF;
+    background: rgba(235, 243, 255, 0.76);
+    border-radius: 8px;
+    padding: 1px 4px;
 }
 
 @media (pointer: fine) and (hover: hover) {
@@ -52,4 +56,12 @@ body {
 
 .mce-item-table:not([border]), .mce-item-table:not([border]) caption, .mce-item-table:not([border]) td, .mce-item-table:not([border]) th, .mce-item-table[border="0"], .mce-item-table[border="0"] caption, .mce-item-table[border="0"] td, .mce-item-table[border="0"] th, table[style*="border-width: 0px"], table[style*="border-width: 0px"] caption, table[style*="border-width: 0px"] td, table[style*="border-width: 0px"] th {
     border: none;
+}
+
+blockquote {
+    margin: 12px 0;
+    padding: 8px 12px;
+    background: var(--editor-quote-bg, rgba(225, 238, 255, 0.72));
+    border-left: 3px solid var(--editor-quote-border, #88a9ed);
+    border-radius: 8px;
 }

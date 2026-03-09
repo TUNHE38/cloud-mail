@@ -4,7 +4,7 @@
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
     scrollbar-width: thin;
-    scrollbar-color: var(--dark-border) transparent;
+    scrollbar-color: var(--anime-scrollbar-thumb) var(--anime-scrollbar-track);
 }
 
 html, body {
@@ -19,7 +19,7 @@ html, body {
 
 :deep(.el-input__inner:focus) {
     background-color: transparent !important;
-    border-color: #dcdfe6 !important;
+    border-color: var(--anime-border-focus) !important;
 }
 
 .el-table thead th {
@@ -34,7 +34,46 @@ body {
 }
 
 html, body {
-    background: var(--el-bg-color);
+    background: var(--anime-bg-gradient);
+}
+
+@media (pointer: fine) and (hover: hover) {
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--anime-scrollbar-track);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--anime-scrollbar-thumb);
+        border-radius: 10px;
+    }
+}
+
+:where(.el-input__wrapper, .el-textarea__inner, .el-select__wrapper) {
+    border-radius: var(--anime-radius-sm);
+    transition: border-color var(--anime-motion-fast), box-shadow var(--anime-motion-fast), background-color var(--anime-motion-fast);
+}
+
+:where(.el-input__wrapper.is-focus, .el-select__wrapper.is-focused, .el-textarea__inner:focus) {
+    box-shadow: 0 0 0 1px var(--anime-border-focus), 0 0 0 3px color-mix(in srgb, var(--anime-border-focus) 24%, transparent);
+}
+
+:where(.el-button, .el-tag, .el-dropdown-menu, .el-popover.el-popper, .el-dialog, .el-card) {
+    border-radius: var(--anime-radius-sm);
+}
+
+.el-button--primary {
+    border: none;
+    background: var(--anime-primary-gradient);
+    box-shadow: var(--anime-shadow-soft);
+}
+
+.el-button--primary:hover {
+    box-shadow: var(--anime-shadow-elevated);
 }
 
 ul, ol {
@@ -116,8 +155,8 @@ button, input, select, textarea {
     --extra-light-fill: #FAFCFF;
     --light-ill: #F5F7FA;
     --light-border: #E4E7ED;
-    --header-actions-border: inset 0 -1px 0 0 var(--el-border-color-lighter);
-    --aside-backgound: #001529;
+    --header-actions-border: inset 0 -1px 0 0 var(--anime-border-soft);
+    --aside-backgound: var(--anime-aside-bg);
     --loadding-background: rgba(255, 255, 255, 0.8);
     --dark-border: #CDD0D6;
     --base-fill: #F0F2F5;
@@ -136,6 +175,33 @@ button, input, select, textarea {
     --secondary-text-color: #909399;
     --message-block-color: rgba(0, 0, 0, 0);
     --loading-hide-transition: all 200ms;
+    --anime-bg-gradient: radial-gradient(circle at 12% 8%, rgba(112, 181, 255, 0.16), transparent 36%), radial-gradient(circle at 88% 10%, rgba(183, 147, 255, 0.14), transparent 40%), #f4f8ff;
+    --anime-surface-1: rgba(255, 255, 255, 0.84);
+    --anime-surface-2: rgba(255, 255, 255, 0.68);
+    --anime-surface-3: rgba(244, 248, 255, 0.72);
+    --anime-panel-gradient: linear-gradient(150deg, rgba(255, 255, 255, 0.92), rgba(243, 249, 255, 0.82));
+    --anime-primary-gradient: linear-gradient(135deg, #65a8ff, #7d8bff 52%, #8a76ff);
+    --anime-accent-gradient: linear-gradient(135deg, #7ec6ff, #9f8bff);
+    --anime-border-soft: rgba(122, 146, 196, 0.22);
+    --anime-border-strong: rgba(117, 140, 190, 0.34);
+    --anime-border-focus: #82a8ff;
+    --anime-shadow-soft: 0 8px 24px rgba(104, 134, 178, 0.14);
+    --anime-shadow-elevated: 0 14px 34px rgba(98, 128, 176, 0.2);
+    --anime-glow: 0 0 0 1px rgba(144, 175, 255, 0.4), 0 0 22px rgba(131, 163, 255, 0.28);
+    --anime-radius-xs: 6px;
+    --anime-radius-sm: 10px;
+    --anime-radius-md: 14px;
+    --anime-radius-lg: 18px;
+    --anime-motion-fast: 160ms;
+    --anime-motion-normal: 260ms;
+    --anime-scrollbar-track: rgba(148, 170, 204, 0.36);
+    --anime-scrollbar-thumb: rgba(122, 146, 186, 0.82);
+    --anime-hover-fill: rgba(122, 170, 255, 0.14);
+    --anime-selected-fill: rgba(124, 150, 255, 0.2);
+    --anime-unread-dot: #6f8fff;
+    --anime-header-bg: var(--anime-panel-gradient);
+    --anime-aside-bg: linear-gradient(180deg, #1e2f56 0%, #182748 52%, #131f39 100%);
+    --anime-main-surface: rgba(255, 255, 255, 0.72);
     --vt-x: 50%;
     --vt-y: 50%;
     --vt-duration: 520ms;
@@ -147,7 +213,7 @@ button, input, select, textarea {
     --light-ill: #262727;
     --light-border: #414243;
     --aside-backgound: #141414;
-    --header-actions-border: inset 0 -1px 0 0 var(--el-border-color-lighter);
+    --header-actions-border: inset 0 -1px 0 0 var(--anime-border-soft);
     --loadding-background: rgba(0, 0, 0, 0.3);
     --dark-border: #636466;
     --base-fill: #303030;
@@ -164,6 +230,33 @@ button, input, select, textarea {
     --base-border-color: #4C4D4F;
     --secondary-text-color: #A3A6AD;
     --message-block-color: rgba(30, 30, 30, 0.2);
+    --anime-bg-gradient: radial-gradient(circle at 12% 6%, rgba(73, 106, 173, 0.36), transparent 38%), radial-gradient(circle at 88% 8%, rgba(113, 88, 158, 0.3), transparent 40%), #0d1323;
+    --anime-surface-1: rgba(24, 32, 52, 0.82);
+    --anime-surface-2: rgba(24, 30, 48, 0.72);
+    --anime-surface-3: rgba(20, 26, 42, 0.86);
+    --anime-panel-gradient: linear-gradient(150deg, rgba(27, 35, 56, 0.92), rgba(17, 23, 38, 0.9));
+    --anime-primary-gradient: linear-gradient(135deg, #6aa8ff, #7f8aff 52%, #8f77ff);
+    --anime-accent-gradient: linear-gradient(135deg, #5f98ff, #8a74ff);
+    --anime-border-soft: rgba(140, 165, 212, 0.26);
+    --anime-border-strong: rgba(157, 182, 228, 0.44);
+    --anime-border-focus: #8cb2ff;
+    --anime-shadow-soft: 0 10px 26px rgba(1, 6, 18, 0.42);
+    --anime-shadow-elevated: 0 20px 40px rgba(0, 0, 0, 0.52);
+    --anime-glow: 0 0 0 1px rgba(141, 170, 255, 0.46), 0 0 24px rgba(110, 134, 225, 0.34);
+    --anime-radius-xs: 6px;
+    --anime-radius-sm: 10px;
+    --anime-radius-md: 14px;
+    --anime-radius-lg: 18px;
+    --anime-motion-fast: 160ms;
+    --anime-motion-normal: 260ms;
+    --anime-scrollbar-track: rgba(86, 105, 142, 0.44);
+    --anime-scrollbar-thumb: rgba(142, 160, 198, 0.72);
+    --anime-hover-fill: rgba(131, 158, 255, 0.18);
+    --anime-selected-fill: rgba(123, 145, 238, 0.28);
+    --anime-unread-dot: #8ba4ff;
+    --anime-header-bg: var(--anime-panel-gradient);
+    --anime-aside-bg: linear-gradient(180deg, #141f38 0%, #111a30 52%, #0d1528 100%);
+    --anime-main-surface: rgba(15, 23, 39, 0.76);
     --el-border-color: #414243 !important;
 }
 

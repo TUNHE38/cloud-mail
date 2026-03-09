@@ -52,11 +52,13 @@
           <el-option key="4" :label="$t('noRecipientTitle')" value="noone"/>
         </el-select>
         <Icon class="icon" icon="iconoir:search" @click="search" width="20" height="20"/>
-        <Icon class="icon" @click="changeTimeSort" icon="material-symbols-light:timer-arrow-down-outline"
-              v-if="params.timeSort === 0" width="28" height="28"/>
-        <Icon class="icon" @click="changeTimeSort" icon="material-symbols-light:timer-arrow-up-outline" v-else
-              width="28" height="28"/>
-        <Icon class="icon clear" icon="fluent:broom-sparkle-16-regular" width="22" height="22" @click="openBathDelete"/>
+        <div class="mobile-actions">
+          <Icon class="icon" @click="changeTimeSort" icon="material-symbols-light:timer-arrow-down-outline"
+                v-if="params.timeSort === 0" width="28" height="28"/>
+          <Icon class="icon" @click="changeTimeSort" icon="material-symbols-light:timer-arrow-up-outline" v-else
+                width="28" height="28"/>
+          <Icon class="icon clear" icon="fluent:broom-sparkle-16-regular" width="22" height="22" @click="openBathDelete"/>
+        </div>
       </template>
     </emailScroll>
     <el-dialog v-model="showBathDelete" :title="$t('clearEmail')" width="335"
@@ -413,6 +415,7 @@ async function latest() {
 .search-type {
   display: flex;
   color: var(--el-text-color-regular);
+  align-items: center;
 }
 
 :deep(.header-actions) {
@@ -428,6 +431,13 @@ async function latest() {
   .setting-icon {
     position: relative;
     top: 3px;
+  }
+
+  :deep(.el-input__wrapper) {
+    min-height: 30px;
+    border-radius: var(--anime-radius-sm);
+    background: var(--anime-surface-2);
+    border: 1px solid var(--anime-border-soft);
   }
 }
 
@@ -452,7 +462,10 @@ async function latest() {
   width: 102px;
 
   :deep(.el-select__wrapper) {
-    min-height: 28px;
+    min-height: 30px;
+    border-radius: var(--anime-radius-sm);
+    background: var(--anime-surface-2);
+    border: 1px solid var(--anime-border-soft);
   }
 }
 
@@ -467,7 +480,7 @@ async function latest() {
 
 :deep(.el-select__wrapper) {
   padding: 2px 10px;
-  min-height: 28px;
+  min-height: 30px;
 }
 
 :deep(.el-date-editor.el-input__wrapper) {
@@ -476,35 +489,18 @@ async function latest() {
 
 .icon {
   cursor: pointer;
+  border-radius: var(--anime-radius-xs);
+  transition: all var(--anime-motion-fast);
 }
 
-.clear {
-  @media (max-width: 419px) {
-    position: absolute;
-    top: 41px;
-    left: 242px;
-  }
+.icon:hover {
+  color: var(--el-color-primary);
+  transform: translateY(-1px);
 }
 
-:deep(.reload) {
-  @media (max-width: 419px) {
-    position: absolute;
-    top: 42px;
-    left: 208px;
-  }
-}
-
-:deep(.delete) {
-  @media (max-width: 456px) {
-    position: absolute;
-    top: 43px;
-    left: 294px;
-  }
-
-  @media (max-width: 419px) {
-    position: absolute;
-    top: 43px;
-    left: 282px;
-  }
+.mobile-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 </style>

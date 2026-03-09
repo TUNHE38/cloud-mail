@@ -110,30 +110,33 @@ const handleResize = () => {
     border: 0;
     height: 100%;
     width: 100%;
-    background: #000000;
-    opacity: 0.6;
+    background: rgba(13, 20, 36, 0.48);
+    backdrop-filter: blur(4px);
+    opacity: 1;
     z-index: 10;
-    transition: all 300ms;
+    transition: all var(--anime-motion-normal);
   }
 }
 
 .block-hide {
   position: fixed;
   pointer-events: none;
-  transition: all 300ms;
+  transition: all var(--anime-motion-normal);
 }
 
 .show {
-  transition: all 100ms;
+  transition: all var(--anime-motion-fast);
   @media (max-width: 767px) {
     position: fixed;
     z-index: 100;
     width: 260px;
+    background: var(--anime-panel-gradient);
+    box-shadow: var(--anime-shadow-elevated);
   }
 }
 
 .hide {
-  transition: all 100ms;
+  transition: all var(--anime-motion-fast);
   position: fixed;
   transform: translateX(-100%);
   opacity: 0;
@@ -161,7 +164,7 @@ const handleResize = () => {
 
 
 .main-view {
-  background: var(--el-bg-color);
+  background: transparent;
 }
 
 

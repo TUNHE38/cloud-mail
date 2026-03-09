@@ -579,7 +579,8 @@ function submitRegister() {
 }
 
 .container {
-  background: v-bind(loginOpacity);
+  background: var(--anime-surface-1);
+  background: color-mix(in srgb, v-bind(loginOpacity) 74%, var(--anime-surface-1));
   padding-left: 40px;
   padding-right: 40px;
   display: flex;
@@ -587,17 +588,18 @@ function submitRegister() {
   justify-content: center;
   width: 450px;
   height: 100%;
-  border-left: 1px solid var(--login-border);
-  box-shadow: var(--el-box-shadow-light);
+  border-left: 1px solid var(--anime-border-soft);
+  box-shadow: var(--anime-shadow-elevated);
+  backdrop-filter: blur(10px);
   @media (max-width: 1024px) {
     padding: 20px 18px;
     width: 384px;
     margin-left: 18px;
   }
   @media (max-width: 767px) {
-    border: 1px solid var(--login-border);
+    border: 1px solid var(--anime-border-soft);
     padding: 20px 18px;
-    border-radius: 6px;
+    border-radius: var(--anime-radius-md);
     height: fit-content;
     width: 100%;
     margin-right: 18px;
@@ -607,7 +609,7 @@ function submitRegister() {
   .btn {
     height: 36px;
     width: 100%;
-    border-radius: 6px;
+    border-radius: var(--anime-radius-sm);
   }
 
   .form-desc {
@@ -632,13 +634,14 @@ function submitRegister() {
   }
 
   :deep(.el-input__wrapper) {
-    border-radius: 6px;
-    background: var(--el-bg-color);
+    border-radius: var(--anime-radius-sm);
+    background: var(--anime-surface-2);
+    border: 1px solid var(--anime-border-soft);
   }
 
   .email-input :deep(.el-input__wrapper) {
-    border-radius: 6px 0 0 6px;
-    background: var(--el-bg-color);
+    border-radius: var(--anime-radius-sm) 0 0 var(--anime-radius-sm);
+    background: var(--anime-surface-2);
   }
 
   .el-input {
@@ -684,12 +687,12 @@ function submitRegister() {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background: var(--el-bg-color);
+  background: var(--anime-surface-1);
   bottom: 10px;
   right: 10px;
   z-index: 1000;
-  border: 1px solid var(--el-border-color-light);
-  box-shadow: var(--el-box-shadow-light);
+  border: 1px solid var(--anime-border-soft);
+  box-shadow: var(--anime-shadow-soft);
   cursor: pointer;
 }
 
@@ -697,8 +700,8 @@ function submitRegister() {
   padding: 0 !important;
   padding-left: 8px !important;
   padding-right: 4px !important;
-  background: var(--el-bg-color);
-  border-radius: 0 8px 8px 0;
+  background: var(--anime-surface-2);
+  border-radius: 0 var(--anime-radius-sm) var(--anime-radius-sm) 0;
 }
 
 :deep(.el-button+.el-button) {
@@ -728,7 +731,7 @@ function submitRegister() {
 
 
 #login-box {
-  background: linear-gradient(to bottom, #2980b9, #6dd5fa, #fff);
+  background: var(--anime-bg-gradient);
   font: 100% Arial, sans-serif;
   height: 100%;
   margin: 0;
